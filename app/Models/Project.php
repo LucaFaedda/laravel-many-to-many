@@ -9,7 +9,7 @@ use App\Models\Type;
 
 class Project extends Model
 {
-    protected $fillable = ['title', 'data_progetto', 'difficoltà', 'descrizione', 'slug', 'types_id'];
+    protected $fillable = ['title', 'data_progetto', 'difficoltà', 'descrizione', 'slug', 'types_id', 'technology_id'];
     use HasFactory;
 
     public static function generateSlug($title){
@@ -18,5 +18,9 @@ class Project extends Model
 
     public function type(){
         return $this->belongsTo(Type::class, 'types_id'); // Serve aggiungere types_id sennò non mi rileva il nome
+    }
+
+    public function technology(){
+        return $this->belongsToMany(Technology::class);
     }
 }

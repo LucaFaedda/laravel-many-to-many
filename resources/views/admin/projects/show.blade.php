@@ -26,6 +26,9 @@
                 <div class="col-2">
                     <p><span class="fw-bold">Tipo: </span> {{$project->type ? $project->type->name : "Senza categoria"}}</p>
                 </div>
+                <div class="col-2">
+                    <p><span class="fw-bold">Tipo: </span> {{$project->technology ? $project->technology->name : "Senza categoria"}}</p>
+                </div>
             </div>
           </div>
       </div>

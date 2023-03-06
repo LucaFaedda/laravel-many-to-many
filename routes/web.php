@@ -26,7 +26,7 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('projects', ProjectController::class)->parameters(['projects'=>'project:slug']); // devo aggiungere il parameters
     Route::resource('types', TypeController::class)->parameters(['types'=>'type:slug']);
-    Route::resource('technologies', TechnologyController::class)->parameters(['technologies'=>'technology:slug']);
+    Route::resource('technologies', TechnologyController::class)->parameters(['technologys'=>'technology:slug']);
 });
 
 Route::middleware('auth')->group(function () {

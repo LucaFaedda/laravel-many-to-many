@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Type;
 use App\Models\Project;
+use App\Models\Technology;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Type;
 
 class ProjectController extends Controller
 {
@@ -30,7 +31,8 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        $technologys = Technology::all();
+        return view('admin.projects.create', compact('types','technologys'));
     }
 
     /**
@@ -49,6 +51,11 @@ class ProjectController extends Controller
         $newproject->fill($form_data);
        
         $newproject->save();
+
+        if($request->has('technology')){
+            $newproject->technology()->attach($request->technology);
+        }
+        // dd($newproject);
 
         // ho dovuto dare come valore nullable a descrizione e data_progetto sennò non me li trovava
 
