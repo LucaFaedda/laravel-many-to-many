@@ -47,11 +47,17 @@
                                         </select>
 
                                     </div>
-                                    <div class="form-group d-flex flex-column">
+                                    <div class="f d-flex flex-column">
                                         <label class="control-label my-2 fw-bold">Technologys</label>
+                                        <div class="d-flex flex-column">
+
+                                        </div>
                                         @foreach ($technologys as $item )
+                                        <div>
+
                                             <input type="checkbox" value="{{$item->id}}" name="technology[]">
                                             <label class="form-check-label">{{$item->name}}</label>
+                                        </div>
                                             
                                         @endforeach
                                     </div>
