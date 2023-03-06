@@ -55,6 +55,7 @@ class ProjectController extends Controller
         if($request->has('technology')){
             $newproject->technology()->attach($request->technology);
         }
+        // bisogna richiamare il nome del model 
         // dd($newproject);
 
         // ho dovuto dare come valore nullable a descrizione e data_progetto sennò non me li trovava
