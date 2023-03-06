@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Admin\TypeController as TypeController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\ProjectController as ProjectController;
+use App\Http\Controllers\Admin\TypeController as TypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('projects', ProjectController::class)->parameters(['projects'=>'project:slug']); // devo aggiungere il parameters
     Route::resource('types', TypeController::class)->parameters(['types'=>'type:slug']);
+    Route::resource('technologies', TechnologyController::class)->parameters(['technologies'=>'technology:slug']);
 });
 
 Route::middleware('auth')->group(function () {
